@@ -12,11 +12,11 @@ public class InvoiceGenerator {
 	 * @return
 	 */
 	public double calculateFare(double distance, int time) {	
-		double totalfare = distance * MINIMUM_COST_PER_KILOMETER + time * COST_PER_TIME;
-		if(totalfare < MINIMUM_FARE) {
+		double totalFare = distance * MINIMUM_COST_PER_KILOMETER + time * COST_PER_TIME;
+		if(totalFare < MINIMUM_FARE) {
 			return MINIMUM_FARE;
 		}
-		return totalfare;
+		return totalFare;
 	}
 	/**
 	 * Usecase 2
@@ -24,10 +24,12 @@ public class InvoiceGenerator {
 	 * @param rides
 	 * @return
 	 */
-	public InvoiceSummary calculateFare(Ride[] rides) {
+	public InvoiceSummary calculateFare(Ride[] rides, int userId) {
 		double totalFare = 0;
 		for(Ride ride : rides) {
+			if(ride.userId == userId) {
 			totalFare += this.calculateFare(ride.distance, ride.time);
+			}
 		}
 		InvoiceSummary invoiceSummary = new InvoiceSummary(rides.length, totalFare);
 		return invoiceSummary;
