@@ -20,13 +20,14 @@ public class InvoiceServiceTest {
 		assertEquals(5, fare, 0.0);
 	}
 	@Test
-	public void givenMultipleRides_shouldReturnInvoiceSummary() {
+	public void givenUserId_getListOfRides_shouldReturnInvoiceSummary() {
 		InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
-		Ride[] rides = { new Ride(3.0, 5),
-				         new Ride(0.1, 2)
-		               };
+		Ride[] rides = { new Ride(1, 3.0, 5),
+		         new Ride(1, 0.1, 2)
+              };
 		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 40);
-		assertEquals(expectedInvoiceSummary, invoiceGenerator.calculateFare(rides));	
+		assertEquals(expectedInvoiceSummary, invoiceGenerator.calculateFare(rides, 1));
+		
 	}
 	
 }
