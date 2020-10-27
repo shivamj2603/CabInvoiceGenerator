@@ -3,7 +3,9 @@ package cabinvoicgenerator;
 public class Ride {
 	public double distance;
 	public int time;
-	public Ride(double distance , int time) {
+	public CabRide cabRide;
+	public Ride(CabRide cabRide, double distance , int time) {
+		this.cabRide = cabRide;
 		this.distance = distance;
 		this.time = time;
 	}
